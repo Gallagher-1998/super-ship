@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="back-line" />
+        <module name="front-user" />
+        <module name="back-send" />
+        <module name="back-user" />
+        <module name="back-api" />
+        <module name="front-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="back-api" target="1.5" />
+      <module name="back-line" target="1.8" />
+      <module name="back-send" target="1.8" />
+      <module name="back-user" target="1.5" />
+      <module name="front-api" target="1.5" />
+      <module name="front-user" target="1.5" />
+      <module name="ship-back" target="1.5" />
+      <module name="ship-front" target="1.5" />
+      <module name="ship-line" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="back-line" options="-parameters" />
+      <module name="back-send" options="-parameters" />
+      <module name="ship-line" options="-parameters" />
+    </option>
+  </component>
+</project>

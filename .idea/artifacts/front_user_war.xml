@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="front-user:war">
+    <output-path>$PROJECT_DIR$/ship-front/front-user/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>front-user</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="front-user.war">
+      <element id="artifact" artifact-name="front-user:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ship-back/back-api/back-api.iml" filepath="$PROJECT_DIR$/ship-back/back-api/back-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-back/back-line/back-line.iml" filepath="$PROJECT_DIR$/ship-back/back-line/back-line.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-back/back-send/back-send.iml" filepath="$PROJECT_DIR$/ship-back/back-send/back-send.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-back/back-user/back-user.iml" filepath="$PROJECT_DIR$/ship-back/back-user/back-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-front/front-api/front-api.iml" filepath="$PROJECT_DIR$/ship-front/front-api/front-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-front/front-user/front-user.iml" filepath="$PROJECT_DIR$/ship-front/front-user/front-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-back/ship-back.iml" filepath="$PROJECT_DIR$/ship-back/ship-back.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-front/ship-front.iml" filepath="$PROJECT_DIR$/ship-front/ship-front.iml" />
+    </modules>
+  </component>
+</project>

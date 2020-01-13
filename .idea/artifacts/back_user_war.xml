@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="back-user:war">
+    <output-path>$PROJECT_DIR$/ship-back/back-user/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>back-user</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="back-user.war">
+      <element id="artifact" artifact-name="back-user:war exploded" />
+    </root>
+  </artifact>
+</component>
