@@ -6,10 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="front-send" />
         <module name="back-line" />
         <module name="front-user" />
         <module name="back-send" />
+        <module name="front-line" />
         <module name="back-user" />
+        <module name="front-order" />
         <module name="back-api" />
         <module name="front-api" />
       </profile>
@@ -20,6 +23,9 @@
       <module name="back-send" target="1.8" />
       <module name="back-user" target="1.5" />
       <module name="front-api" target="1.5" />
+      <module name="front-line" target="1.8" />
+      <module name="front-order" target="1.8" />
+      <module name="front-send" target="1.8" />
       <module name="front-user" target="1.5" />
       <module name="ship-back" target="1.5" />
       <module name="ship-front" target="1.5" />
@@ -30,6 +36,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="back-line" options="-parameters" />
       <module name="back-send" options="-parameters" />
+      <module name="front-line" options="-parameters" />
+      <module name="front-order" options="-parameters" />
+      <module name="front-send" options="-parameters" />
       <module name="ship-line" options="-parameters" />
     </option>
   </component>

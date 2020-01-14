@@ -11,6 +11,9 @@
         <option value="$PROJECT_DIR$/ship-front/pom.xml" />
         <option value="$PROJECT_DIR$/ship-back/back-line/pom.xml" />
         <option value="$PROJECT_DIR$/ship-back/back-send/pom.xml" />
+        <option value="$PROJECT_DIR$/ship-front/front-line/pom.xml" />
+        <option value="$PROJECT_DIR$/ship-front/front-order/pom.xml" />
+        <option value="$PROJECT_DIR$/ship-front/front-send/pom.xml" />
       </list>
     </option>
   </component>

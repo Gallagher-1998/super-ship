@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/ship-back/back-send/back-send.iml" filepath="$PROJECT_DIR$/ship-back/back-send/back-send.iml" />
       <module fileurl="file://$PROJECT_DIR$/ship-back/back-user/back-user.iml" filepath="$PROJECT_DIR$/ship-back/back-user/back-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/ship-front/front-api/front-api.iml" filepath="$PROJECT_DIR$/ship-front/front-api/front-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-front/front-line/front-line.iml" filepath="$PROJECT_DIR$/ship-front/front-line/front-line.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-front/front-order/front-order.iml" filepath="$PROJECT_DIR$/ship-front/front-order/front-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ship-front/front-send/front-send.iml" filepath="$PROJECT_DIR$/ship-front/front-send/front-send.iml" />
       <module fileurl="file://$PROJECT_DIR$/ship-front/front-user/front-user.iml" filepath="$PROJECT_DIR$/ship-front/front-user/front-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/ship-back/ship-back.iml" filepath="$PROJECT_DIR$/ship-back/ship-back.iml" />
       <module fileurl="file://$PROJECT_DIR$/ship-front/ship-front.iml" filepath="$PROJECT_DIR$/ship-front/ship-front.iml" />

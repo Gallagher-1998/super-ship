@@ -5,6 +5,9 @@
     <file url="file://$PROJECT_DIR$/ship-back/back-send" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ship-back/back-user" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ship-back/ship-line" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ship-front/front-line" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ship-front/front-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ship-front/front-send" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ship-front/front-user" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ship-front/front-user" charset="UTF-8" />
   </component>
