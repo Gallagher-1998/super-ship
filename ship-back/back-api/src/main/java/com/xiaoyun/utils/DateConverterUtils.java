@@ -7,7 +7,7 @@ import org.springframework.core.convert.converter.Converter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+//时间转换工具,用于将时间格式的字符串转成时间对象
 public class DateConverterUtils implements Converter<String,Date> {
 
     private static final String REG_DATE1 = "^\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}$";
