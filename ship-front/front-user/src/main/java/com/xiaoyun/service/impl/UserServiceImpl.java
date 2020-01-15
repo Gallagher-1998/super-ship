@@ -20,4 +20,8 @@ public class UserServiceImpl implements IUserService {
     public boolean register(UserPojo userPojo) {
         return userMapper.register(userPojo);
     }
+
+    public UserPojo login(UserPojo userPojo) {
+        return userMapper.login(userPojo);
+    }
 }

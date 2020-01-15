@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
     @Autowired
@@ -19,7 +21,7 @@ public class UserController {
     public ResponseMsg checkName(String vName){
        String v=userService.checkName(vName);
        ResponseMsg msg=new ResponseMsg();
-        if(v!=null){
+        if(v==null){
             msg.setCode(1);
             msg.setMessage("恭喜您,用户名可用");
             return msg;
@@ -40,6 +42,21 @@ public class UserController {
         }
         msg.setCode(3);
         msg.setMessage("网络不好,请稍后再试");
+        return msg;
+    }
+    @RequestMapping("login")
+    @ResponseBody
+    public ResponseMsg login(UserPojo userPojo, HttpSession session){
+        UserPojo userPojo1=userService.login(userPojo);
+        ResponseMsg msg=new ResponseMsg();
+        if(userPojo1!=null){
+            session.setAttribute("user",userPojo1);
+            msg.setCode(4);
+            msg.setMessage("登陆成功");
+            return msg;
+        }
+        msg.setCode(5);
+        msg.setMessage("账户或密码有误");
         return msg;
     }
 

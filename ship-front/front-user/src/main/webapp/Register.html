@@ -26,9 +26,9 @@
       <div class="language"><a href="" class="cn">中文版</a><em>|</em><a href="" class="en">ENGLISH</a></div>
       <div class="topright">
         <ul>
-          <li><a href="login.html">公共用户登录</a></li>
+          <li><a href="Login.html">公共用户登录</a></li>
           <em>|</em>
-          <li><a href="login.html">协议用户登录 </a></li>
+          <li><a href="Login.html">协议用户登录 </a></li>
           <em>|</em>
           <li><a href="Register.html"> 注册</a></li>
         </ul>
@@ -59,7 +59,7 @@
   <div class="Registerbox">
     	<div class="columnname">会员注册</div>
         <div class="content">
-            <div id="msg"></div>
+            <H3><div id="msg"></div></H3>
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td class="left"><span class="true">*</span>用户名称：</td>
@@ -79,7 +79,8 @@
                 </tr>
                 <tr>
                     <td class="left"><span class="true">*</span>接收信息方式：</td>
-                    <td><input type="checkbox" name="vRw" id="vRw" class=""><em class="check">电子邮件</em><input type="checkbox" class=""><em class="check"> 短信</em></td>
+                    <td><input type="radio" value="电子邮件 "name="vRw" id="vRw" checked="checked"><em class="check">电子邮件</em>
+                        <input type="radio" name="vRw" value="短信" id="vRw2"><em class="check"> 短信</em></td>
                 </tr>	
                 <tr>
                     <td class="left"><span class="true"></span>姓名/公司名：</td>
@@ -108,8 +109,9 @@
                 </tr>
                 <tr>
                     <td class="left"></td>
-                    <td><input type="button" class="btn" id="btn" value="提 交" onclick="register()"><input type="button" class="btn btn2" value="取 消"></td>
+                    <td><button onclick="register()">注册</button><input type="button" class="btn btn2" value="取 消"></td>
                 </tr>
+                <a href="Login.html">去登陆</a>
                 <tr>
                     <td class="left"></td>
                     <td><span class="true">*</span><span class="must">号内容为必填</span></td>
@@ -186,11 +188,13 @@ jQuery.each(jQuery("img"), function (i, n) { jQuery(n).error(function () { n.src
             type:"post",
             data:{"vName":vName},
             success:function (msg) {
-                alert("haha");
                 if(msg.code==0){
-                    $("#msg").text("msg.message");
-                }else{
-                    $("#msg").text("msg.message");
+                    $("#msg").text(msg.message);
+                    return;
+                }
+                if(msg.code==1){
+                    $("#msg").text(msg.message);
+                    return;
                 }
 
             }
@@ -200,8 +204,8 @@ jQuery.each(jQuery("img"), function (i, n) { jQuery(n).error(function () { n.src
         var vName=$("#vName").val();
         var vPass=$("#vPass").val();
         var vRpass=$("#vRpass").val();
-        var vEmial=$("#vEmail").val();
-        var vRw=$("#vRw").val();
+        var vEmail=$("#vEmail").val();
+        var vRw=$('input:radio:checked').val()
         var realName=$("#realName").val();
         var vAddress=$("#vAddress").val();
         var vCode=$("#vCode").val();
@@ -216,7 +220,7 @@ jQuery.each(jQuery("img"), function (i, n) { jQuery(n).error(function () { n.src
             $("#msg").text("请再次输入密码");
             return;
         }
-        if(!vPass==vRpass){
+        if(vPass!=vRpass){
             $("#msg").text("两次密码不一致");
             return;
         }
@@ -230,10 +234,10 @@ jQuery.each(jQuery("img"), function (i, n) { jQuery(n).error(function () { n.src
             data:{"vName":vName,"vPass":vPass,"vEmail":vEmail,"vRw":vRw,"realName":realName,"vAddress":vAddress,"vCode":vCode,"vTel":vTel,"vMob":vMob},
              success:function (msg) {
                  if(msg.code==2){
-                     $("#msg").text("msg.message");
+                     $("#msg").text(msg.message);
                  }
                  if(msg.code==3){
-                     $("#msg").text("msg.message");
+                     $("#msg").text(msg.message);
                  }
              }
         })

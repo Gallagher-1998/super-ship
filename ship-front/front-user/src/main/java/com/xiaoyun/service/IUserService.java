@@ -7,4 +7,6 @@ public interface IUserService {
     public String checkName(String vName);
 
     public boolean register(UserPojo userPojo);
+
+    public UserPojo login(UserPojo userPojo);
 }

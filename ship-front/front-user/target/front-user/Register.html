@@ -26,9 +26,9 @@
       <div class="language"><a href="" class="cn">中文版</a><em>|</em><a href="" class="en">ENGLISH</a></div>
       <div class="topright">
         <ul>
-          <li><a href="login.html">公共用户登录</a></li>
+          <li><a href="Login.html">公共用户登录</a></li>
           <em>|</em>
-          <li><a href="login.html">协议用户登录 </a></li>
+          <li><a href="Login.html">协议用户登录 </a></li>
           <em>|</em>
           <li><a href="Register.html"> 注册</a></li>
         </ul>
@@ -59,11 +59,11 @@
   <div class="Registerbox">
     	<div class="columnname">会员注册</div>
         <div class="content">
-            <div id="msg"></div>
+            <H3><div id="msg"></div></H3>
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td class="left"><span class="true">*</span>用户名称：</td>
-                    <td><input type="text" onchange="checkName()" id="vName" name="vName" class="text"><span class="num" >请输入1-20个字符</span></td>
+                    <td><input type="text" onblur="checkName()" id="vName" name="vName" class="text"><span class="num" >请输入1-20个字符</span></td>
                 </tr>
                  <tr>
                     <td class="left"><span class="true">*</span>用户密码：</td>
@@ -71,48 +71,47 @@
                 </tr>
                 <tr>
                     <td class="left"><span class="true">*</span>验证密码：</td>
-                    <td><input type="text" class="text"></td>
+                    <td><input type="text" name="vRpass" id="vRpass" class="text"></td>
                 </tr>
                  <tr>
                     <td class="left"><span class="true">*</span>电子邮箱：</td>
-                    <td><input type="text" class="text"></td>
+                    <td><input type="text" name="vEmail" id="vEmail" class="text"></td>
                 </tr>
                 <tr>
                     <td class="left"><span class="true">*</span>接收信息方式：</td>
-                    <td><input type="checkbox" class=""><em class="check">电子邮件</em><input type="checkbox" class=""><em class="check"> 短信</em></td>
+                    <td><input type="radio" value="电子邮件 "name="vRw" id="vRw" checked="checked"><em class="check">电子邮件</em>
+                        <input type="radio" name="vRw" value="短信" id="vRw2"><em class="check"> 短信</em></td>
                 </tr>	
                 <tr>
                     <td class="left"><span class="true"></span>姓名/公司名：</td>
-                    <td><input type="text" class="text"></td>
+                    <td><input type="text" name="realName" id="realName" class="text"></td>
                 </tr>
                  <tr>
                     <td class="left"><span class="true"></span>详细地址：</td>
-                    <td><input type="text" class="text"></td>
+                    <td><input type="text" name="vAddress" id="vAddress" class="text"></td>
                 </tr>
                 <tr>
                     <td class="left"><span class="true"></span>邮政编码：</td>
-                    <td><input type="text" class="text"><span class="num">例：200000</span></td>
+                    <td><input type="text" name="vCode" id="vCode" class="text"><span class="num">例：200000</span></td>
                 </tr>
                  <tr>
                     <td class="left"><span class="true"></span>固定电话：</td>
-                    <td><input type="text" class="text"><span class="num">例：02112345678(上海电话)</span></td>
+                    <td><input type="text" name="vTel" id="vTel" class="text"><span class="num">例：02112345678(上海电话)</span></td>
                 </tr>
                 <tr>
                     <td class="left"><span class="true"></span>手机：</td>
-                    <td><input type="text" class="text"><span class="num">例：13800000000</span></td>
+                    <td><input type="text" name="vMob" id="vMob" class="text"><span class="num">例：13800000000</span></td>
                 </tr>
-                 <tr>
-                    <td class="left"><span class="true">*</span>请输入验证码：</td>
-                    <td><input type="text" class="text text2"><span class="code"><img src="uploadfiles/image/code.jpg"></span><span class="num">看不清?点击图片即可重新生成(请区分大小写)</span></td>
-                </tr>	
+
                 <tr>
                     <td class="left"></td>
-                    <td><input type="checkbox" class="checkbox"	><em class="radio">我已阅读相关退款声明，并愿意遵守该声明中的有关事项</em><a href="" class="edit">查看条款</a>  </td>
+                    <td><input type="checkbox" class="checkbox"	id="read"><em class="radio">我已阅读相关退款声明，并愿意遵守该声明中的有关事项</em><a href="" class="edit">查看条款</a>  </td>
                 </tr>
                 <tr>
                     <td class="left"></td>
-                    <td><input type="button" class="btn" value="提 交"><input type="button" class="btn btn2" value="取 消"></td>
+                    <td><button onclick="register()">注册</button><input type="button" class="btn btn2" value="取 消"></td>
                 </tr>
+                <a href="Login.html">去登陆</a>
                 <tr>
                     <td class="left"></td>
                     <td><span class="true">*</span><span class="must">号内容为必填</span></td>
@@ -188,14 +187,59 @@ jQuery.each(jQuery("img"), function (i, n) { jQuery(n).error(function () { n.src
             url:"checkName",
             type:"post",
             data:{"vName":vName},
-            success:function (data) {
-                if(data.code==0){
-                    $("#msg").text("用户名重复")
-                }else{
-                    $("#msg").text("用户名可用")
+            success:function (msg) {
+                if(msg.code==0){
+                    $("#msg").text(msg.message);
+                    return;
+                }
+                if(msg.code==1){
+                    $("#msg").text(msg.message);
+                    return;
                 }
 
             }
+        })
+    }
+    function register() {
+        var vName=$("#vName").val();
+        var vPass=$("#vPass").val();
+        var vRpass=$("#vRpass").val();
+        var vEmail=$("#vEmail").val();
+        var vRw=$('input:radio:checked').val()
+        var realName=$("#realName").val();
+        var vAddress=$("#vAddress").val();
+        var vCode=$("#vCode").val();
+        var vTel=$("#vTel").val();
+        var vMob=$("#vMob").val();
+        var read=$("#read").attr("checked");
+        if(vPass==""||vPass==undefined){
+            $("#msg").text("密码不能为空");
+            return;
+        }
+        if(vRpass==""||vRpass==undefined){
+            $("#msg").text("请再次输入密码");
+            return;
+        }
+        if(vPass!=vRpass){
+            $("#msg").text("两次密码不一致");
+            return;
+        }
+        if(read==false){
+            $("#msg").text("请阅读文献");
+            return;
+        }
+        $.ajax({
+            url:"register",
+            type:"post",
+            data:{"vName":vName,"vPass":vPass,"vEmail":vEmail,"vRw":vRw,"realName":realName,"vAddress":vAddress,"vCode":vCode,"vTel":vTel,"vMob":vMob},
+             success:function (msg) {
+                 if(msg.code==2){
+                     $("#msg").text(msg.message);
+                 }
+                 if(msg.code==3){
+                     $("#msg").text(msg.message);
+                 }
+             }
         })
     }
 

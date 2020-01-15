@@ -26,9 +26,9 @@
       <div class="language"><a href="" class="cn">中文版</a><em>|</em><a href="" class="en">ENGLISH</a></div>
       <div class="topright">
         <ul>
-          <li><a href="login.html">公共用户登录</a></li>
+          <li><a href="Login.html">公共用户登录</a></li>
           <em>|</em>
-          <li><a href="login.html">协议用户登录 </a></li>
+          <li><a href="Login.html">协议用户登录 </a></li>
           <em>|</em>
           <li><a href="Register.html"> 注册</a></li>
         </ul>
@@ -57,25 +57,22 @@
 <section class="Contain">
   <div class="Current">当前位置:<a href="index.html">首页</a> <em>|</em> <a href="#" class="column">会员中心</a> <span>常用收发货人</span></div>
 	<div class="LoginBox">
+        <h3><div id="msg"></div></h3>
     	<div class="leftbox">
         	<div class="columnname">已注册的用户</div>
             <div class="table">
             	  <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <td class="left"><span class="true"></span>用户名称：</td>
-                        <td><input type="text" class="text"><span class="num">请输入正确的邮箱地址或手机号码</span></td>
+                        <td><input type="text" name="vMob" id="vMob" class="text"><span class="num">请输入正确的邮箱地址或手机号码</span></td>
                     </tr>
                      <tr>
                         <td class="left"><span class="true"></span>用户密码：</td>
-                        <td><input type="text" class="text"><span class="num">请输入6-16个字符</span></td>
-                    </tr>
-                    <tr>
-                        <td class="left"><span class="true"></span>动态密码：</td>
-                        <td><input type="text" class="text"><span class="num">协议客户登录必填</span></td>
+                        <td><input type="text" name="vPass" id="vPass"  class="text"><span class="num">请输入6-16个字符</span></td>
                     </tr>
                     <tr>
                         <td class="left"></td>
-                        <td><input type="button" class="btn" value="登 录"></td>
+                        <td><input type="button" onclick="login()" class="btn" value="登 录"></td>
                     </tr>
                     <tr>
                         <td class="left"></td>
@@ -157,6 +154,34 @@
 <script type="text/javascript">
 //整站无图处理
 jQuery.each(jQuery("img"), function (i, n) { jQuery(n).error(function () { n.src = 'uploadfiles/nopic.jpg'; }); n.src = n.src; });
+
+    function login() {
+        var vMob=$("#vMob").val();
+        var vPass=$("#vPass").val();
+        if(vMob==""||vMob==undefined){
+            $("#msg").text("账号不能为空");
+        }
+        if(vPass==""||vPass==undefined){
+            $("#msg").text("密码不能为空");
+        }
+        $.ajax({
+            url:"login",
+            type:"post",
+            data:{"vMob":vMob,"vPass":vPass},
+
+            success:function (msg) {
+                alert("hah");
+                if(msg.code==4){
+                    $("#msg").text(msg.message);
+                }
+                if(msg.code==5){
+                    $("#msg").text(msg.message);
+                }
+            }
+
+        })
+    }
+
 </script>
 <!--bottom End-->
 </body>

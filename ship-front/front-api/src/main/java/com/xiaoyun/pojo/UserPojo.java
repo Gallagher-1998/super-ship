@@ -9,7 +9,7 @@ public class UserPojo implements Serializable {
     private String vName;
     private String vPass;
     private String vEmail;
-    private int vRw;
+    private String vRw;
     private String realName;
     private String vAddress;
     private String vCode;
