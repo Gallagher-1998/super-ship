@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyun.mapper.SeaRouteMapper">
+    <!--设置一个resultMap备用,但是我们实际使用中不使用-->
+   <resultMap id="seaRouteMapper" type="seaRoutePojo">
+       <id property="routeId" column="route_id"/>
+       <result property="routeName" column="route_name"/>
+       <result property="startStation" column="start_station"/>
+       <result property="reachStation" column="reach_station"/>
+       <collection property="ships" ofType="com.xiaoyun.pojo.ShipPojo">
+           <id property="shipId" column="ship_id"/>
+           <result property="shipUid" column="ship_uid"/>
+           <result property="shipRundays" column="ship_rundays"/>
+           <result property="shipIntervaldays" column="ship_intervaldays"/>
+           <result property="shipStatus" column="ship_status"/>
+           <result property="targetTons" column="target_tons"/>
+           <result property="shipPrice" column="ship_price"/>
+           <collection property="shipVoys" ofType="com.xiaoyun.pojo.ShipVoyPojo">
+               <id property="svId" column="sv_id"/>
+               <result property="svNumber" column="sv_number"/>
+               <result property="svStatus" column="sv_status"/>
+               <result property="startTime" column="start_time"/>
+               <result property="reachTime" column="reach_time"/>
+           </collection>
+       </collection>
+   </resultMap>
+    <insert id="save">
+        insert into sea_route (route_name,start_station,reach_station) values (#{routeName},#{startStation},#{reachStation})
+    </insert>
+    <select id="getRouteByName" resultType="seaRoutePojo">
+         select route_id as routeId,route_name as routeName,start_station as startStation,reach_station as reachStation
+         from sea_route where route_name like concat('%',#{routeName},'%')
+    </select>
+    <select id="getRouteByStation" resultType="seaRoutePojo">
+        select route_id as routeId,route_name as routeName,start_station as startStation,reach_station as reachStation
+         from sea_route where start_station=#{startStation} and reach_station=#{reachStation}
+    </select>
+    <select id="getlist" resultType="seaRoutePojo">
+        select route_id as routeId,route_name as routeName,start_station as startStation,reach_station as reachStation from sea_route
+    </select>
+    <delete id="deleteRoute">
+        delete from sea_route where route_id=#{routeId}
+    </delete>
+    <update id="updateRoute">
+        update sea_route set route_name=#{routeName},start_station=#{startStation},reach_station=#{reachStation} where route_id=#{routeId}
+    </update>
+</mapper>
+
+       
+
+
+

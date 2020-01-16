@@ -2,5 +2,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.com.xiaoyun.mapper.UserMapper">
+<mapper namespace="com.xiaoyun.mapper.UserMapper">
+
+    <resultMap id="userMap" type="com.xiaoyun.pojo.UserPojo">
+        <id column="vid" property="vid"/>
+        <result column="v_name" property="vName"/>
+        <result column="v_pass" property="vPass"/>
+        <result column="v_email" property="vEmail"/>
+       <result column="v_rw" property="vRw"/>
+        <result column="realName" property="realName"/>
+        <result column="v_address" property="vAddress"/>
+        <result column="v_code" property="vCode"/>
+        <result column="v_tel" property="vTel"/>
+        <result column="v_mob" property="vMob"/>
+    </resultMap>
+
+    <select id="checkName" resultType="String">
+        select realName from sys_vip where v_name=#{vName}
+    </select>
+
+    <insert id="register" >
+        insert into sys_vip (v_name,v_pass,v_email,v_rw,realName,v_address,v_code,v_tel,v_mob)
+        values(#{vName},#{vPass},#{vEmail},#{vRw},#{realName},#{vAddress},#{vCode},#{vTel},#{vMob})
+    </insert>
+
+    <select id="login" resultMap="userMap">
+        select v_name,v_pass,v_email,v_rw,realName,v_address,v_code,v_tel,v_mob from sys_vip where v_Mob=#{vMob} and v_pass=#{vPass}
+    </select>
 </mapper>
