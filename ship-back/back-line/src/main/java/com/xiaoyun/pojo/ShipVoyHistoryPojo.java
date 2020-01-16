@@ -9,6 +9,7 @@ import java.util.Date;
 public class ShipVoyHistoryPojo {
 
     private int svId;
+    private int svShipId;//归属船id
     private int svNumber;//船次号,区别于自增主键
     private byte svStatus;//船次状态:-1为过期(航行完) 0为正在航行中  1为待航行
     private Date startTime;//启航时间,我们精确到分钟
@@ -20,10 +21,11 @@ public class ShipVoyHistoryPojo {
     //lombok动态生成的toString会被我们重写的覆盖,而使用我们的
 
 
-    @Override//移除shipPojo
+    @Override
     public String toString() {
-        return "ShipVoyPojo{" +
+        return "ShipVoyHistoryPojo{" +
                 "svId=" + svId +
+                ", svShipId=" + svShipId +
                 ", svNumber=" + svNumber +
                 ", svStatus=" + svStatus +
                 ", startTime=" + startTime +

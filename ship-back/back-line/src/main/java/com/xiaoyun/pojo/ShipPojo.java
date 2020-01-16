@@ -10,9 +10,10 @@ public class ShipPojo {
 
     private int shipId;
     private int shipUid;//使用者id,我们称之为"船长"
+    private int shipRouteId;//航线id
     private int shipRundays;//航行天数
     private int shipIntervaldays;//间歇期天数
-    private byte shipStatus;//船当前状态  可用不可用
+    private byte shipStatus = 1;//船当前状态  可用不可用
     private int targetTons;//目标容量,吨位数
     private double shipPrice;//单价,元/吨
     private SeaRoutePojo seaRoutePojo;//归属的航线
@@ -24,17 +25,18 @@ public class ShipPojo {
     //lombok动态生成的toString会被我们重写的覆盖,而使用我们的
 
 
-    @Override//移除seaRoute
+    @Override
     public String toString() {
         return "ShipPojo{" +
                 "shipId=" + shipId +
                 ", shipUid=" + shipUid +
+                ", shipRouteId=" + shipRouteId +
                 ", shipRundays=" + shipRundays +
                 ", shipIntervaldays=" + shipIntervaldays +
                 ", shipStatus=" + shipStatus +
                 ", targetTons=" + targetTons +
                 ", shipPrice=" + shipPrice +
-                ", shipVoys=" + shipVoys +
+                ", seaRoutePojo=" + seaRoutePojo +
                 '}';
     }
 }

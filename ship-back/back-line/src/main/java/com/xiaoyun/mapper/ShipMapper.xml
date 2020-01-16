@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyun.mapper.ShipMapper">
+    <select id="getByseaName" resultType="com.xiaoyun.pojo.ShipPojo">
+        select ship_id as shipId,ship_uid as shipUid,ship_routeid as shipRouteId,ship_rundays as shipRundays,ship_intervaldays as shipIntervcaldays,ship_status as shipStatus,
+        target_tons as targetTons,ship_price as shipPrice from ship where ship_routeid=#{routeId}
+    </select>
+    <select id="getByUserId" resultType="com.xiaoyun.pojo.ShipPojo">
+        select ship_id as shipId,ship_uid as shipUid,ship_routeid as shipRouteId,ship_rundays as shipRundays,ship_intervaldays as shipIntervcaldays,ship_status as shipStatus,
+        target_tons as targetTons,ship_price as shipPrice from ship where ship_uid=#{userId}
+    </select>
+    <insert id="save">
+        insert into ship (ship_uid,ship_routeid,ship_rundays,ship_intervaldays,ship_status,target_tons,ship_price)
+        values(#{shipUid},#{shipRouteId},#{shipRundays},#{shipIntervaldays},#{shipStatus},#{targetTons},#{shipPrice})
+    </insert>
+    <delete id="deleteShip">
+        delete from ship where ship_id=#{shipId}
+    </delete>
+    <update id="updateShip">
+        update ship set
+        <if test="shipId != null and shipId != 0">
+            ship_uid=#{shipId},
+        </if>
+        <if test="shipRouteId != null and shipRouteId != 0">
+            ship_routeid=#{shipRouteId},
+        </if>
+        <if test="shipRundays != null and shipRundays != 0">
+            ship_rundays=#{shipRundays},
+        </if>
+        <if test="shipIntervaldays != null and shipIntervaldays != 0">
+            ship_intervaldays=#{shipIntervaldays},
+        </if>
+        <if test="shipStatus != null and shipStatus != 1">
+            ship_status=#{shipStatus},
+        </if>
+        <if test="targetTons != null and targetTons != 1">
+            ship_tons=#{targetTons},
+        </if>
+        <if test="shipPrice != null and shipPrice != 1">
+            ship_price=#{shipPrice},
+        </if>
+        where ship_id=#{shipId}
+    </update>
+</mapper>

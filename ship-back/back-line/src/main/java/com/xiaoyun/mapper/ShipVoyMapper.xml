@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyun.mapper.ShipVoyMapper">
+    <select id="getByNumber" resultType="com.xiaoyun.pojo.ShipVoyPojo">
+        select sv_id as svId,sv_shipid as svShipId,sv_number as svNumber, sv_status as svStatus,start_time as startTime,reach_time as reachTime
+         from ship_voy where sv_number=#{svNumber}
+    </select>
+    <select id="getByShipId" resultType="com.xiaoyun.pojo.ShipVoyPojo">
+        select sv_id as svId,sv_shipid as svShipId,sv_number as svNumber,sv_status as svStatus,start_time as startTime,reach_time as reachTime
+         from ship_voy where sv_shipid=#{svShipId}
+    </select>
+    <select id="getByStatus" resultType="com.xiaoyun.pojo.ShipVoyPojo">
+        select sv_id as svId,sv_shipid as svShipId,sv_number as svNumber,sv_status as svStatus,start_time as startTime,reach_time as reachTime
+         from ship_voy where sv_status=#{svStatus}
+    </select>
+    <select id="getByShipIdMax" resultType="com.xiaoyun.pojo.ShipVoyPojo">
+        select sv_id as svId,sv_shipid as svShipId,sv_number as svNumber,sv_status as svStatus,start_time as startTime,reach_time as reachTime
+         from ship where sv_shipid=#{svShipId}
+         and sv_number=(
+         select max(sv_number) from ship_voy where sv_shipid=#{svShipId}
+         )
+    </select>
+    <insert id="save">
+        insert into ship_voy (sv_shipid,sv_number,sv_status,start_time,reach_time)
+        values (#{svShipId},#{svNumber},#{svStatus},#{startTime},#{reachTime})
+    </insert>
+    <insert id="saveHistory">
+        insert into ship_voyhistory (sv_shipid,sv_number,sv_status,start_time,reach_time)
+        values (#{svShipId},#{svNumber},#{svStatus},#{startTime},#{reachTime})
+    </insert>
+    <delete id="deleteById">
+        delete from ship_voy where sv_id=#{svId}
+    </delete>
+</mapper>

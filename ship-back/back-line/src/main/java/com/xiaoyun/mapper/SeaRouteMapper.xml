@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaoyun.mapper.SeaRouteMapper">
     <!--设置一个resultMap备用,但是我们实际使用中不使用-->
-   <resultMap id="seaRouteMapper" type="seaRoutePojo">
+   <resultMap id="seaRouteMapper" type="com.xiaoyun.pojo.SeaRoutePojo">
        <id property="routeId" column="route_id"/>
        <result property="routeName" column="route_name"/>
        <result property="startStation" column="start_station"/>
@@ -29,15 +29,15 @@
     <insert id="save">
         insert into sea_route (route_name,start_station,reach_station) values (#{routeName},#{startStation},#{reachStation})
     </insert>
-    <select id="getRouteByName" resultType="seaRoutePojo">
+    <select id="getRouteByName" resultType="com.xiaoyun.pojo.SeaRoutePojo">
          select route_id as routeId,route_name as routeName,start_station as startStation,reach_station as reachStation
          from sea_route where route_name like concat('%',#{routeName},'%')
     </select>
-    <select id="getRouteByStation" resultType="seaRoutePojo">
+    <select id="getRouteByStation" resultType="com.xiaoyun.pojo.SeaRoutePojo">
         select route_id as routeId,route_name as routeName,start_station as startStation,reach_station as reachStation
          from sea_route where start_station=#{startStation} and reach_station=#{reachStation}
     </select>
-    <select id="getlist" resultType="seaRoutePojo">
+    <select id="getlist" resultType="com.xiaoyun.pojo.SeaRoutePojo">
         select route_id as routeId,route_name as routeName,start_station as startStation,reach_station as reachStation from sea_route
     </select>
     <delete id="deleteRoute">
