@@ -1,0 +1,6 @@
+com\xiaoyun\realm\MyRealm.class
+com\xiaoyun\service\impl\UserServiceImpl.class
+com\xiaoyun\service\IUserService.class
+com\xiaoyun\factory\ShiroMapFactory.class
+com\xiaoyun\mapper\UserMapper.class
+com\xiaoyun\web\UserController.class
