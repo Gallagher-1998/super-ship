@@ -43,4 +43,8 @@
         </if>
         where ship_id=#{shipId}
     </update>
+    <select id="getByShipId" resultType="com.xiaoyun.pojo.ShipPojo">
+         select ship_id as shipId,ship_uid as shipUid,ship_routeid as shipRouteId,ship_rundays as shipRundays,ship_intervaldays as shipIntervcaldays,ship_status as shipStatus,
+        target_tons as targetTons,ship_price as shipPrice from ship where ship_id=#{shipId}
+    </select>
 </mapper>

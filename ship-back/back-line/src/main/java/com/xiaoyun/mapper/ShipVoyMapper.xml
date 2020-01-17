@@ -17,7 +17,7 @@
     </select>
     <select id="getByShipIdMax" resultType="com.xiaoyun.pojo.ShipVoyPojo">
         select sv_id as svId,sv_shipid as svShipId,sv_number as svNumber,sv_status as svStatus,start_time as startTime,reach_time as reachTime
-         from ship where sv_shipid=#{svShipId}
+         from ship_voy where sv_shipid=#{svShipId}
          and sv_number=(
          select max(sv_number) from ship_voy where sv_shipid=#{svShipId}
          )
@@ -33,4 +33,11 @@
     <delete id="deleteById">
         delete from ship_voy where sv_id=#{svId}
     </delete>
+    <insert id="batchsaveHistory">
+        insert into ship_voyhistory (sv_shipid,sv_number,sv_status,start_time,reach_time)
+        values <foreach collection="list" index="index" item="item" separator=",">
+        (#{item.svShipId},#{item.svNumber},#{item.svStatus},#{item.startTime},#{item.reachTime})
+    </foreach>
+
+    </insert>
 </mapper>

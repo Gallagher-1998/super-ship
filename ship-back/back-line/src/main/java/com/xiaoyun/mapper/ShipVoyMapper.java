@@ -15,5 +15,5 @@ public interface ShipVoyMapper {
     int save(ShipVoyPojo shipVoyPojo);//保存新船次
     int saveHistory(ShipVoyHistoryPojo shipVoyHistoryPojo);//转移数据到历史记录
     ShipVoyPojo deleteById(int svId);//移除船次
-
+    int batchsaveHistory(List<ShipVoyHistoryPojo> shipVoyHistoryPojos);
 }

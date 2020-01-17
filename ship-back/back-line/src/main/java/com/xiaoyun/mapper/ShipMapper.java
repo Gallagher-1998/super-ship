@@ -12,7 +12,7 @@ public interface ShipMapper {
     int save(ShipPojo shipPojo);//新增船
     boolean deleteShip(int shipId);//根据船id删除
     boolean updateShip(ShipPojo shipPojo);//更新船信息
-
+    ShipPojo getByShipId(int shipId);//根据船id查询船
 
 
 
